@@ -1,4 +1,4 @@
-public class camisa {
+public class Camisa {
 
     private String cor;
     private double tamanho;
@@ -17,7 +17,7 @@ public class camisa {
     }
 
     //Modificador
-    public void setCor(){
+    public void setCor(String cor){
         this.cor = cor;
 
     }
@@ -29,7 +29,7 @@ public class camisa {
     }
 
     //Modificador
-    public void setTamanho(){
+    public void setTamanho(double tamanho){
         this.tamanho = tamanho;
 
     }
@@ -40,8 +40,12 @@ public class camisa {
     }
 
     //Modificador
-    public void setTipo(){
+    public void setTipo(String tipo){
         this.tipo = tipo;
+    }
+
+    public String toString(){
+        return "Cor: "+ cor +" Tamnho: "+tamanho+" Tipo: "+tipo;
     }
 
 

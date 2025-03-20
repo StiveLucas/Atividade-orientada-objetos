@@ -5,12 +5,12 @@ public class camisaApp{
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<camisa> list = new ArrayList<>();
+        ArrayList<Camisa> list = new ArrayList<>();
 
-        int codigo = 10;
+        int codigo = -1;
         while (codigo != 0) {
 
-            System.err.println("=== Menu ===");
+            System.err.println("\n=== Menu ===");
             System.err.println("Código | Descrição");
             System.err.println("1 | Cadastrar Camisa");
             System.err.println("2 | Listar Camisas");
@@ -39,20 +39,82 @@ public class camisaApp{
 
                 case 2:
 
-                    System.out.println("Listando todas as Camisas");
-                    for(String camisa: camisas){
-                        System.out.println(camisa);
+                    System.out.println("\n=== Lista de Camisas ===");
+
+                    //O Comando is.Empty verifica se a lista está vazia.
+                    if (list.isEmpty()) {
+                        System.out.println("Nenhuma camisa cadastrada.");
+                    } else {
+                        for (int i = 0; i < list.size(); i++) {
+                            System.out.println("Índice: " + i + " | " + list.get(i));
+
+                        }
                     }
-            
-                default:
+
                     break;
+
+                case 3:
+
+                    System.out.println("\n=== Atualizar Camisa ===");
+
+                    //O Comando is.Empty verifica se a lista está vazia.
+                    if (list.isEmpty()) {
+                        System.out.println("Nenhuma camisa cadastrada.");
+                        break;
+                    }
+
+                    System.out.print("Digite o índice da camisa a ser atualizada: ");
+                    int indiceAtualizar = sc.nextInt();
+
+                    if (indiceAtualizar < 0 || indiceAtualizar >= list.size()) {
+                        System.out.println("❌ Índice inválido.");
+                        break;
+                    }
+
+                    System.out.print("Nova cor: ");
+                    String novaCor = sc.next();
+
+                    System.out.print("Novo tamanho: ");
+                    double novoTamanho = sc.nextDouble();
+
+                    System.out.print("Novo tipo: ");
+                    String novoTipo = sc.next();
+
+                    list.set(indiceAtualizar, new Camisa(novaCor, novoTamanho, novoTipo));
+                    System.out.println("Camisa atualizada com sucesso!");
+                    break;
+
+                case 4:
+
+                    System.out.println("\n=== Remover Camisa ===");
+
+                    //O Comando is.Empty verifica se a lista está vazia.
+                    if (list.isEmpty()) {
+                        System.out.println(" Nenhuma camisa cadastrada.");
+                        break;
+                    }
+
+                    System.out.print("Digite o índice da camisa a ser removida: ");
+                    int indiceRemover = sc.nextInt();
+
+                    if (indiceRemover < 0 || indiceRemover >= list.size()) {
+                        System.out.println("❌ Índice inválido.");
+                        break;
+                    }
+
+                    list.remove(indiceRemover);
+                    System.out.println(" Camisa removida com sucesso!");
+                    break;
+
+                case 0:
+                    System.out.println("Saindo do programa...");
+                    break;
+
+                default:
+                    System.out.println(" Código inválido! Tente novamente.");
             }
-            
-            
         }
 
-
-
+        sc.close();
     }
-        
 }
